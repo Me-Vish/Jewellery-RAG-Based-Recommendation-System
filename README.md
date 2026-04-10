@@ -46,7 +46,7 @@ Ensure you have Python 3.9+ installed and an active API key for the models.
 ### 2. Clone and Install
 ```bash
 # Clone the repository
-git clone https://github.com/ARUN-GR05/jewellery_RAG_basedReccomendation.git
+git clone https://github.com/xxx/jewellery_RAG_basedReccomendation.git
 cd jewellery_RAG_basedReccomendation
 
 # Install dependencies
