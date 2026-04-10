@@ -1,76 +1,108 @@
-✨ Jewellery RAG-based Recommendation System
-A state-of-the-art Retrieval-Augmented Generation (RAG) system designed for the jewellery industry. This project enables users to find their perfect jewellery piece using seamless Natural Language Search and Multimodal Image-to-Search capabilities.
+# ✨ Jewellery RAG-based Recommendation System
 
-🚀 Key Features
-🔍 Hybrid Semantic Search: Combines top-tier vector embeddings with keyword-based heuristic scoring for pinpoint accuracy.
-📸 Multimodal Image Analysis: Upload a jewellery photo to trigger a deep-vision analysis that identifies material, style, and intricate details.
-🖌️ OCR-Enhanced Retrieval: Automatically detects and extracts text/branding from jewellery images to refine search results.
-⚡ High-Performance FAISS Backend: Blazing-fast similarity search across thousands of products using Facebook AI Similarity Search.
-🎨 Premium Web Interface: A clean, responsive dashboard for intuitive product discovery.
-🛠️ Technical Architecture
-The Tech Stack
-Layer	Technologies
-Backend	Python, FastAPI, Uvicorn
-Vector Engine	FAISS (Facebook AI Similarity Search)
-AI Models	OpenAI Embeddings (text-embedding-3-small), Gemini LLM (Vision), PaddleOCR
-Data Handling	Pandas, NumPy, Pillow
-Frontend	Vanilla HTML5, CSS3, JavaScript (ES6+)
-How it Works
-The Retrieval Loop:
+A state-of-the-art **Retrieval-Augmented Generation (RAG)** system designed for the jewellery industry. This project enables users to find their perfect jewellery piece using seamless **Natural Language Search** and **Multimodal Image-to-Search** capabilities.
 
-For a text query, the system generates a 1536-dimensional vector embedding.
-It performs a similarity search in the FAISS index to find candidate items.
-It applies a Hybrid Scoring Logic: (Vector Similarity * 0.7) + (Keyword Boost * 0.3).
-Multimodal Ingestion:
+---
 
-When an image is uploaded, PaddleOCR extract labels or brand names.
-The image is processed by a Vision LLM (Gemini) to generate a rich semantic description.
-This metadata-rich description is then used as a query for the retrieval engine.
-📦 Installation & Setup
-1. Prerequisite
+## 🚀 Key Features
+
+- **🔍 Hybrid Semantic Search**: Combines top-tier vector embeddings with keyword-based heuristic scoring for pinpoint accuracy.
+- **📸 Multimodal Image Analysis**: Upload a jewellery photo to trigger a deep-vision analysis that identifies material, style, and intricate details.
+- **🖌️ OCR-Enhanced Retrieval**: Automatically detects and extracts text/branding from jewellery images to refine search results.
+- **⚡ High-Performance FAISS Backend**: Blazing-fast similarity search across thousands of products using Facebook AI Similarity Search.
+- **🎨 Premium Web Interface**: A clean, responsive dashboard for intuitive product discovery.
+
+---
+
+## 🛠️ Technical Architecture
+
+### **The Tech Stack**
+| Layer | Technologies |
+| :--- | :--- |
+| **Backend** | Python, FastAPI, Uvicorn |
+| **Vector Engine** | FAISS (Facebook AI Similarity Search) |
+| **AI Models** | OpenAI Embeddings (`text-embedding-3-small`), Gemini LLM (Vision), PaddleOCR |
+| **Data Handling** | Pandas, NumPy, Pillow |
+| **Frontend** | Vanilla HTML5, CSS3, JavaScript (ES6+) |
+
+### **How it Works**
+1. **The Retrieval Loop**:
+   - For a text query, the system generates a **1536-dimensional vector embedding**.
+   - It performs a similarity search in the **FAISS index** to find candidate items.
+   - It applies a **Hybrid Scoring Logic**: `(Vector Similarity * 0.7) + (Keyword Boost * 0.3)`.
+
+2. **Multimodal Ingestion**:
+   - When an image is uploaded, **PaddleOCR** extract labels or brand names.
+   - The image is processed by a **Vision LLM (Gemini)** to generate a rich semantic description.
+   - This metadata-rich description is then used as a query for the retrieval engine.
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Prerequisite
 Ensure you have Python 3.9+ installed and an active API key for the models.
 
-2. Clone and Install
+### 2. Clone and Install
+```bash
 # Clone the repository
 git clone https://github.com/ARUN-GR05/jewellery_RAG_basedReccomendation.git
 cd jewellery_RAG_basedReccomendation
 
 # Install dependencies
 pip install -r backend/requirements.txt
-3. Environment Configuration
-Create a .env file in the backend/ directory by copying the example:
+```
 
+### 3. Environment Configuration
+Create a `.env` file in the `backend/` directory by copying the example:
+```bash
 cp backend/.env.example backend/.env
-Then edit the .env file and add your actual API credentials:
+```
 
+Then edit the `.env` file and add your actual API credentials:
+```env
 GPT_API_KEY=your_actual_api_key_here
 GPT_BASE_URL=your_actual_api_base_url_here
-Warning
+```
 
-Never commit your .env file to version control! It contains sensitive API keys. The .gitignore file is already configured to exclude it.
+> [!WARNING]
+> **Never commit your `.env` file to version control!** It contains sensitive API keys. The `.gitignore` file is already configured to exclude it.
 
-4. Run the Application
+### 4. Run the Application
+```bash
 cd backend
 python main.py
-Access the dashboard at http://localhost:8000.
+```
+Access the dashboard at `http://localhost:8000`.
 
-🚀 Deployment Guides
-Deploying to Render (FastAPI)
-Create a New Web Service on Render and connect your GitHub repository.
-Environment: Select Python.
-Build Command:
-pip install -r backend/requirements.txt
-Start Command:
-uvicorn backend.main:app --host 0.0.0.0 --port $PORT
-Environment Variables: Add GPT_API_KEY and GPT_BASE_URL in the "Env Vars" section.
-Deploying to Streamlit Cloud
-If you choose to build a Streamlit-based UI (e.g., app.py):
+---
 
-Push your Streamlit code to GitHub.
-Log in to Streamlit Cloud and click "New app".
-Select your repository and the main file (e.g., backend/app.py).
-Click "Deploy!"
-📂 Project Structure
+## 🚀 Deployment Guides
+
+### **Deploying to Render (FastAPI)**
+1. **Create a New Web Service** on Render and connect your GitHub repository.
+2. **Environment**: Select `Python`.
+3. **Build Command**: 
+   ```bash
+   pip install -r backend/requirements.txt
+   ```
+4. **Start Command**:
+   ```bash
+   uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+   ```
+5. **Environment Variables**: Add `GPT_API_KEY` and `GPT_BASE_URL` in the "Env Vars" section.
+
+### **Deploying to Streamlit Cloud**
+If you choose to build a Streamlit-based UI (e.g., `app.py`):
+1. Push your Streamlit code to GitHub.
+2. Log in to [Streamlit Cloud](https://share.streamlit.io/) and click **"New app"**.
+3. Select your repository and the main file (e.g., `backend/app.py`).
+4. Click **"Deploy!"**
+
+---
+
+## 📂 Project Structure
+```text
 ├── backend/
 │   ├── src/            # Core logic (OCR, Vision, Embedding, Search)
 │   ├── data/           # FAISS index and Metadata CSV
@@ -81,7 +113,12 @@ Click "Deploy!"
 │   ├── style.css       # Premium Styling
 │   └── script.js       # Client-side Logic
 └── README.md
-🤝 Contributing
+```
+
+---
+
+## 🤝 Contributing
 Contributions are welcome! If you have ideas for improving the recommendation accuracy or adding new vision models, feel free to open a PR.
 
-Developed with ❤️ for the Jewellery Industry.
+---
+*Developed with ❤️ for the Jewellery Industry.*
